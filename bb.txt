@@ -1,0 +1,57 @@
+2. 在代码文件夹创建Git仓库
+用cd命令到代码文件夹（新建文件夹再复制代码到此也可以），Windows系统则可以在文件夹下右键点击 Git Bash here 直接运行类似Linux的终端。
+
+输入git init命令，创建本地仓库。
+
+3. 添加文件至仓库
+输入git add .命令把文件夹下的全部文件加入git仓库。**注意：**add后有 . 符号且用空格隔开。
+
+还可以用git status查看当前状态。
+
+4. 把项目提交给本地仓库
+用 git commit -m "你的标注信息" 命令提交给本地仓库
+
+5. 生成SSH KEY并绑定在GitHub上（之前绑定过可以跳过）
+如果之前有生成ssh则用cat ~/.ssh/id_rsa.pub命令查看即可
+
+若没有用ssh-keygen -t rsa -C "youremail@example.com"
+
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:       
+1
+2
+意思是设置密码，直接输入回车即可。
+
+再用cat ~/.ssh/id_rsa.pub查看并复制密钥即可。
+
+形如这样（复制也要这样复制！）：
+
+ssh-rsa asdfadfadsfafdsfadsfasdfasdf**************************************************************************************************adsfadfsasdfasdfasfasdfasdfasdfadsfadsfasdfadfaf= youremail@example.com
+1
+之后就在GitHub或者CODING的个人设置下的密钥中添加即可。
+
+6. 关联本地仓库和远程仓库
+git remote add origin https://**************.git
+
+后面的https地址是你的仓库地址。
+
+7. 推送
+如果是新仓库用 git push -u origin master 命令推送
+
+下次再推送就用 git push origin master 命令就可以了
+
+提示
+在创建远程仓库时如果你选用了Initialize this repository with a README（创建README文件），则在推送时可能会报错：failed to push some refs to https://abc/def.git。使用以下下命令合并内容
+
+git pull --rebase origin master
+1
+rebase详情可见git rebase 还是 merge的使用场景最通俗的解释
+
+使用ignore忽略上传文件
+
+vim .gitignore
+1
+在文件中输入你忽略的文件名，
+
+用 :wq 保存退出，之后用命令 git reset git status git add .
+
